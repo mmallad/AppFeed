@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome {{ user }}</title>
+    <style type="text/css">
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            font-size: 68%;
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+<div style="width:1024px; position: relative; min-height: 400px; margin: 0 auto;">
+    <div>
+        <ul style="font-size: 1.3em;">
+            <li><a href="/">Home</a> </li>
+
+            <li><a href="/logout/">Logout</a> </li>
+        </ul>
+    </div>
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 50%;">
+                <h1>Access ID</h1>
+                {% if access_err %}
+                    <span style="color: red;">
+                        {{ access_err }}
+                    </span>
+                {% endif %}
+                <form action="{{ STATIC_URL }}/accessID/" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                <input required="required" pattern="[A-Za-z0-9]" type="text" name="accessName" id="accessName" placeholder="Access Name" style="padding: 6px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Generate" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <hr />
+                <table style="width: 100%;" border="1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                ID
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ad in a_data %}
+                            <tr>
+                                <td>
+                                    {{ ad.NAME }}
+                                </td>
+                                <td>
+                                    {{ ad.ID }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 50%;">
+                <h1>Procedure</h1>
+                {% if access_err %}
+                    <span style="color: red;">
+                        {{ pro_err }}
+                    </span>
+                {% endif %}
+                <form action="{{ STATIC_URL }}/pro/" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" required="required" pattern="[A-Za-z0-9]{2,}" name="proCedureName" id="proCedureName" placeholder="Procedure Name" style="padding: 6px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="qry">Query:</label>
+                                <br>
+                                <textarea required="required" name="qry" id="qry"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Add Procedure" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <hr />
+                <table style="width: 100%;" border="1">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Procedure Name
+                        </th>
+                        <th>
+                            Query
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pd in p_data %}
+                        <tr>
+                            <td>
+                                {{ pd.ID }}
+                            </td>
+                            <td>
+                                {{ pd.NAME }}
+                            </td>
+                            <td>
+                                {{ pd.QRY }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

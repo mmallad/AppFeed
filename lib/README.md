@@ -1,0 +1,15 @@
+This is class for creating captcha image.
+You can customize according to your need.
+
+Usages In Django :)
+
+#In Your View
+def Index(request):
+ import captcha.Captcha as Cap
+ c = Cap.Captcha()
+ #Create text to show in image
+ t = ('A','B','C','D')
+ #Assign text to session so that later it can be compared with user input.
+ request.session['cap'] = t
+ image = c.setText(t).CreateImage()
+
