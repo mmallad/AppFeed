@@ -11,11 +11,11 @@ For example:
 
 http://example.com/feed -> URL
 
-PROCEDURE_NAME ="insertUser"
-DATA = json.dumps({"ID":88,"NAME":"Dpak Malla"})
-
+`PROCEDURE_NAME ="insertUser"`
+          
+`DATA = json.dumps({"ID":88,"NAME":"Dpak Malla"})`
+        
 Than You will get JSON response:
-{"msg": "Invalid Request!", "error": true}
-
-this is error response example :(
+      
+`{"msg": "Invalid Request!", "error": true}`
 
